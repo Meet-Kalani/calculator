@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
 
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
     <!-- favicon -->
     <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
 
@@ -16,25 +22,26 @@
 <body>
 
     <main class="calculator">
-        <span class="display">0</span>
+        <div class="display"><input type="number" class="display-number"></div>
         <div class="btn-container">
             <button class="clear">CE</button>
+            <button class="backspace">&lt;-</button>
             <button class="number" value="7">7</button>
             <button class="number" value="8">8</button>
             <button class="number" value="9">9</button>
-            <button class="operator">+</button>
+            <button class="number" value="+">+</button>
             <button class="number" value="4">4</button>
             <button class="number" value="5">5</button>
             <button class="number" value="6">6</button>
-            <button class="operator">-</button>
-            <button class="number" value="3">3</button>
-            <button class="number" value="2">2</button>
+            <button class="number" value="-">-</button>
             <button class="number" value="1">1</button>
-            <button class="operator">*</button>
-            <button class="backspace">&lt;-</button>
-            <button class="number">0</button>
+            <button class="number" value="2">2</button>
+            <button class="number" value="3">3</button>
+            <button class="number" value="*">*</button>
+            <button class="number" value=".">.</button>
+            <button class="number" value="0">0</button>
             <button class="equals">=</button>
-            <button class="operator">/</button>
+            <button class="number" value="/">/</button>
         </div>
     </main>
 

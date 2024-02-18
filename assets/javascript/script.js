@@ -1,4 +1,5 @@
-const display = document.querySelector('.display');
+// . point value add this functionality
+const display = document.querySelector('.display-number');
 const numberElements = document.querySelectorAll('.number');
 const operatorElements = document.querySelectorAll('.operator');
 const clearElement = document.querySelector('.clear');
@@ -6,30 +7,48 @@ const equalsElement = document.querySelector('.equals');
 const backspaceElement = document.querySelector('.backspace');
 
 let total = "";
+let operand = "";
 
 numberElements.forEach(numberBtnElement => {
     numberBtnElement.addEventListener('click', () => {
-        display.textContent += numberBtnElement.value;
-        total += numberBtnElement.value;
-        console.log(total)
+        appendToDisplay(numberBtnElement.value);
     })
 })
 
-operatorElements.forEach(operatorElement => {
-    operatorElement.addEventListener('click', () => {
-        
-    })
-})
+clearElement.addEventListener('click', clearDisplay)
 
-clearElement.addEventListener('click', () => {
-    display.textContent = 0;
-    total = 0;
-})
+equalsElement.addEventListener('click', calculate);
 
-equalsElement.addEventListener('click', () => {
+backspaceElement.addEventListener('click', backspace);
 
-})
+display.addEventListener('keypress', function (event) {
+    const key = event.key;
+    
+    if (key === 'Enter') {
+        calculate();
+    }
+});
 
-backspaceElement.addEventListener('click', () => {
-    display.textContent = total = display.textContent.slice(0,display.textContent.length - 1);
-})
+function clearDisplay() {
+    display.value = total = "";
+    display.focus();
+}
+// error case: if user does 102+ and then enter handle it ---handled
+// error case: 10++++
+function calculate() {
+    // if (["+", "-", "*", "/"].includes(display.value[display.value.length - 1])) {
+    //     display.value = display.value.slice(0,display.value.length-1);
+    // }
+    display.value = eval(display.value);
+}
+
+function backspace() {
+    display.value = total = display.value.slice(0, display.value.length - 1);
+}
+
+function appendToDisplay(value) {
+    if (total == 0) {
+        display.value = "";
+    }
+    total = display.value += value;
+}
