@@ -6,9 +6,6 @@ const clearElement = document.querySelector('.clear');
 const equalsElement = document.querySelector('.equals');
 const backspaceElement = document.querySelector('.backspace');
 
-let total = "";
-let operand = "";
-
 numberElements.forEach(numberBtnElement => {
     numberBtnElement.addEventListener('click', () => {
         appendToDisplay(numberBtnElement.value);
@@ -30,25 +27,28 @@ display.addEventListener('keypress', function (event) {
 });
 
 function clearDisplay() {
-    display.value = total = "";
+    display.value = "";
     display.focus();
 }
-// error case: if user does 102+ and then enter handle it ---handled
-// error case: 10++++
+
 function calculate() {
-    // if (["+", "-", "*", "/"].includes(display.value[display.value.length - 1])) {
-    //     display.value = display.value.slice(0,display.value.length-1);
-    // }
-    display.value = eval(display.value);
+    try{
+        display.value = eval(display.value);
+    } catch(err){
+        console.error(err);
+        display.value = "Error!";
+    }
 }
 
 function backspace() {
-    display.value = total = display.value.slice(0, display.value.length - 1);
+    display.value = display.value.slice(0, display.value.length - 1);
 }
 
 function appendToDisplay(value) {
-    if (total == 0) {
+    if(display.value === "Error!" || display.value === "Infinity"){
         display.value = "";
+    } else if (['+', '-', '*', '/'].includes(display.value.slice(-1)) && ['+', '-', '*', '/'].includes(value)) {
+        return;
     }
-    total = display.value += value;
+    display.value += value;  
 }
