@@ -1,14 +1,13 @@
+/* Resetting style */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,body{
-    height: 100%;
-}
-
+/* Main styling */
 body{
+    height: 100vh;
     background-color: #003B36;
     display: flex;
     justify-content: center;
@@ -16,7 +15,7 @@ body{
     font-family: "Montserrat", sans-serif;
 }
 
-.calculator{
+#calculator{
     max-width: fit-content;
     width: 100%;
     border: 3px solid rgba(255, 255, 255, 0.6);
@@ -27,13 +26,13 @@ body{
     padding: 12px;
 }
 
-.calculator .display{
+.display{
     height: 80px;
     border: 3px solid rgb(215, 201, 201);
     border-radius: 5px;
 }
 
-.calculator .display-number{
+.display .display-number{
     width: 100%;
     height: 100%;
     background-color: #F4F4F9;
@@ -43,7 +42,11 @@ body{
     text-align: right;
 }
 
-.calculator .btn-container{
+.display .display-number:disabled{
+    color: #000000;
+}
+
+.btn-container{
     display: grid;
     grid-template-columns: repeat(4,60px);
     grid-template-rows: repeat(5,60px);
@@ -55,8 +58,7 @@ body{
     background-color: #F4F4F9;
     border-radius: 5px;
     cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+    font: 500 20px "Montserrat", sans-serif;
 }
 
 .btn-container .clear,
